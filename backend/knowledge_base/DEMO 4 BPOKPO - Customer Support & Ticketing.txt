@@ -1,0 +1,49 @@
+BPO/KPO DEMO - DOCUMENT PACK
+BPO/KPO Sector RAG Document - Support Services, Troubleshooting, Ticketing
+
+CUSTOMER SUPPORT CHANNELS
+Email Support: support@company.com. Response within 4-8 hours.
+Phone Support: 1800-123-4567. 9 AM - 9 PM IST, Mon-Fri.
+Chat Support: Real-time response, 24/7 availability via App/Website.
+Human Agent: Type "Talk to agent" in chat to transfer from bot.
+
+TICKETING SYSTEM
+Ticket Creation: Auto-generated via email/chat. Manual creation via Help Portal.
+Status Tracking: Check status in 'My Tickets'. Statuses: Open, In Progress, Resolved, Closed.
+SLA (Response Time): High priority <2 hours, Medium <4 hours, Low <24 hours.
+Escalation: If not resolved in 24h, click "Escalate" button or email supervisor@company.com.
+
+COMMON ISSUES & SOLUTIONS
+
+BILLING & SUBSCRIPTION
+- Double Charge: Contact support with transaction ID. Refund in 7-10 days.
+- Refund Not Received: Check bank statement after 10 days. Contact bank with ARN number.
+- Change Plan: Account Settings > Subscription > Change Plan. Prorated charge applies.
+- Cancel Subscription: Account Settings > Subscription > Cancel. Valid till period end.
+- Update Billing Address: Settings > Billing > Edit Address.
+
+ACCOUNT & LOGIN
+- Forgot Password: Click "Forgot Password" > Enter Email > Reset link sent.
+- Username: Usually your email address. Contact support if forgotten.
+- Account Locked: Unlocks auto after 30 mins. Or reset password to unlock immediately.
+- Delete Account: Settings > Privacy > Delete Account. Irreversible after 30 days.
+
+PRODUCT & SERVICE
+- Internet Slow: Restart router. Check service outage map on website.
+- Damaged Product: Report within 48 hours with photos. Return pickup arranged.
+- Wrong Item: Keep item unused. Initiate return > Reason "Wrong Item".
+- Warranty: Standard 1 year. Extended warranty available for purchase within 30 days.
+- User Manual: Available in 'Resources' section of website.
+- Promo Code: Apply at checkout. Check validity and T&C.
+
+ORDER MANAGEMENT
+- Track Order: Use tracking ID sent via SMS/Email on courier website.
+- Cancel Order: Allowed before shipping. Instant refund to source.
+- Delivery Time: Standard 5-7 days. Express 2-3 days.
+- Missing Package: Mark as "Not Received" in app. Investigation takes 48 hours.
+
+FAQ - BPO/KPO
+Q: How do I create a support ticket? A: Email support@company.com or use in-app chat.
+Q: What's the response time? A: High priority <2 hours, Medium <4 hours.
+Q: Can I speak to a supervisor? A: Yes, request escalation if ticket is unresolved for >24 hours.
+Q: What are support hours? A: 24/7 for chat/email. Phone support 9 AM - 9 PM.

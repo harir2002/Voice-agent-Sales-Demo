@@ -1,0 +1,90 @@
+BANKING DEMO - DOCUMENT PACK
+Banking Sector RAG Document - Loan Products, EMI, KYC, Account Services
+
+LOAN PRODUCTS & RATES
+
+PERSONAL LOANS
+Amount: ₹50,000 to ₹50,00,000
+Interest Rate: 10.5% - 14.5% per annum
+Tenure: 12-60 months
+Processing Fee: 1-2% of loan amount
+Prepayment: Allowed after 12 months with 1% penalty
+Eligibility: Age 21-60, Min salary ₹15,000/month, CIBIL >700
+
+HOME LOANS
+Amount: ₹10,00,000 to ₹1,00,00,000
+Interest Rate: 8.5% - 9.5% per annum
+Tenure: 10-30 years
+Processing Fee: 0.5-1% of loan amount
+LTV: Up to 90%
+Eligibility: Age 21-65, Min annual income ₹2,50,000, CIBIL >750
+Documents: Income proof, property papers, ID proof, bank statements
+
+AUTO LOANS
+Amount: ₹1,00,000 to ₹30,00,000
+Interest Rate: 9.5% - 13.5% per annum
+Tenure: 24-84 months
+Processing Fee: 1-2%
+Eligibility: Age 21-65, Min annual income ₹3,00,000
+
+STUDENT LOANS
+Amount: Up to ₹20,00,000 for studies in India, ₹50,00,000 for abroad
+Interest Rate: 8.5% - 11% per annum
+Repayment: Starts 1 year after course completion
+Collateral: Required for loans > ₹7.5 Lakhs
+
+EMI CALCULATION
+Formula: EMI = [P x R x (1+R)^N] / [(1+R)^N - 1]
+Example: ₹5,00,000 at 12% for 60 months = ₹11,100 per month
+Total Interest: ₹1,66,000
+Online EMI Calculator: www.bank.com/emi-calculator
+
+KYC REQUIREMENTS
+Mandatory: Aadhaar, PAN, Address Proof, Photo
+Income Proof: Salary Cert or Last 3 months bank statements
+Processing: 2-3 business days
+Verification: Background check + CIBIL review
+Update Process: Visit branch or use Mobile Banking App > Services > Update KYC
+
+ACCOUNT SERVICES
+Account Balance: Check via App, Net Banking, ATM, SMS
+Transaction Limits: Daily ATM ₹50,000, Online ₹1,00,000
+Monthly Charges: ₹100-₹500 if balance <₹5,000
+Account Statement: Monthly or on-demand
+Minimum Balance: ₹5,000 (Savings), ₹25,000 (Current)
+Joint Account: Available for family members, requires KYC for both holders
+
+CARD SERVICES
+Debit Card:
+- Block Lost Card: Use Mobile App > Cards > Block, or call 1800-123-4567
+- Activation: Set PIN at ATM or via Net Banking
+- International Usage: Enable via App > Card Settings > International Transactions
+- Charges: International markup fee is 3.5% + GST
+
+Credit Card:
+- Limit Increase: Request via App if eligible based on usage/income
+- Bill Payment: Due date 20 days after statement generation
+- Reward Points: 1 point per ₹100 spent
+
+TRANSFERS & PAYMENTS
+Wire Transfer: Visit branch for international swift transfer. Charges ₹500-₹1000.
+UPI: Link account via App. Daily limit ₹1,00,000.
+NEFT/RTGS: Free online. Branch charges apply.
+Forex Rates: Updated daily at 10 AM. Check website for current rates.
+
+FRAUD PROTECTION
+24/7 monitoring on all transactions
+SMS alerts for transactions >₹5,000
+Zero liability if reported within 24 hours
+Fraud investigation: 30-45 days
+Dispute Transaction: Call customer care or report in App within 30 days
+
+FAQ - BANKING
+Q: How do I check my loan balance? A: Use Mobile App > Loan Details, or call customer care.
+Q: Can I prepay my loan? A: Yes, after 12 months. 1% penalty applies.
+Q: What's my CIBIL score? A: Free report at www.cibil.com. Scores >750 get better rates.
+Q: How long does approval take? A: Personal/Auto: 2-5 days. Home: 15-30 days.
+Q: How do I open a savings account? A: Apply online with Aadhaar/PAN or visit nearest branch.
+Q: Where is the nearest ATM? A: Use the 'Locator' feature in our Mobile App.
+Q: How can I get a cheque book? A: Request via Net Banking or Mobile App. Delivered in 5-7 days.
+Q: Do you have safe deposit lockers? A: Yes, available at select branches. Annual fee ₹2000-₹10000.

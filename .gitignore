@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Database
+chroma_db/
+chroma_db_v2/
+backend/chroma_db/
+backend/chroma_db_v2/
+
+# Data files (generated at runtime)
+backend/data/
+
+# Temp
+temp_audio_*.wav
+*.wav
+
+# Call logs
+call_logs.json

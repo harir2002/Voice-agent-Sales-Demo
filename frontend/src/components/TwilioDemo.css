@@ -1,0 +1,728 @@
+/* ==================== TWILIO DEMO - CLEAN LAYOUT ==================== */
+
+.twilio-demo {
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* Header - Simple */
+.twilio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+}
+
+.twilio-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-primary);
+}
+
+.twilio-logo svg {
+    color: var(--primary);
+}
+
+.twilio-logo h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.twilio-logo p {
+    margin: 0.15rem 0 0 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.config-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.config-btn:hover {
+    background: rgba(231, 0, 11, 0.1);
+    border-color: var(--primary);
+}
+
+.config-btn.configured {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+/* Configuration Panel */
+.config-panel {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.config-panel h3 {
+    margin: 0 0 1.2rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-group input {
+    padding: 0.7rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-group small {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.error-message {
+    padding: 0.8rem;
+    background: rgba(255, 50, 50, 0.15);
+    border: 1px solid rgba(255, 50, 50, 0.25);
+    border-radius: 10px;
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.config-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.save-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.save-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(231, 0, 11, 0.3);
+}
+
+.save-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.clear-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.25);
+    border-radius: 10px;
+    color: #ff6b6b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 50, 50, 0.2);
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tab Selector */
+.tab-selector {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab:hover {
+    background: rgba(231, 0, 11, 0.05);
+    border-color: rgba(231, 0, 11, 0.2);
+}
+
+.tab.active {
+    background: rgba(231, 0, 11, 0.1);
+    border-color: var(--primary);
+    color: var(--text-primary);
+}
+
+/* Call Info Card */
+.call-info-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.call-info-card h3 {
+    margin: 0 0 0.4rem 0;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.call-info-card>p {
+    margin: 0 0 1.5rem 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+/* Phone Display */
+.phone-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(231, 0, 11, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+    border: 1px solid rgba(231, 0, 11, 0.2);
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+}
+
+.phone-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.phone-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+/* Webhook Configuration */
+.webhook-config-section {
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.webhook-config-section h4 {
+    margin: 0 0 0.4rem 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.webhook-config-section>p {
+    margin: 0 0 1rem 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.inbound-sector-select {
+    margin-bottom: 1rem;
+}
+
+.inbound-sector-select label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.4rem;
+}
+
+.sector-dropdown {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+.sector-dropdown:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.sector-dropdown option {
+    background: #1a1a2e;
+    color: white;
+}
+
+.webhook-config-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.webhook-config-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(231, 0, 11, 0.3);
+}
+
+.webhook-config-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.webhook-status {
+    margin-top: 0.8rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+}
+
+.webhook-status.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: #10b981;
+}
+
+.webhook-status.error {
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.25);
+    color: #ff6b6b;
+}
+
+.configured-url small {
+    display: block;
+    margin-top: 0.4rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    word-break: break-all;
+}
+
+/* Test Call Info */
+.test-call-info {
+    padding: 1rem;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.test-call-info h4 {
+    margin: 0 0 0.3rem 0;
+    color: #10b981;
+    font-size: 0.9rem;
+}
+
+.test-call-info p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+.test-call-info strong {
+    color: var(--text-primary);
+}
+
+/* Outbound Form */
+.outbound-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Sector Grid */
+.sector-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+}
+
+.sector-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.8rem 0.6rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sector-btn:hover {
+    background: rgba(231, 0, 11, 0.05);
+    border-color: rgba(231, 0, 11, 0.2);
+}
+
+.sector-btn.active {
+    background: rgba(231, 0, 11, 0.1);
+    border-color: var(--primary);
+    color: var(--text-primary);
+}
+
+.sector-icon {
+    font-size: 1.4rem;
+}
+
+.sector-name {
+    font-size: 0.7rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Purpose Dropdown - for proactive calls */
+.purpose-dropdown {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.purpose-dropdown:hover {
+    border-color: rgba(231, 0, 11, 0.3);
+}
+
+.purpose-dropdown:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(231, 0, 11, 0.15);
+}
+
+.purpose-dropdown option {
+    background: #1a1a2e;
+    color: white;
+    padding: 0.5rem;
+}
+
+.purpose-hint {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.6rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 6px;
+    color: #10b981 !important;
+}
+
+/* Call Button */
+.call-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.call-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 25px rgba(16, 185, 129, 0.4);
+}
+
+.call-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.call-status {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.call-status.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: #10b981;
+}
+
+.call-status.error {
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.25);
+    color: #ff6b6b;
+}
+
+/* Active Calls */
+.active-calls {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.active-calls h4 {
+    margin: 0 0 0.8rem 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.call-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.call-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.call-type {
+    padding: 0.3rem 0.6rem;
+    background: rgba(231, 0, 11, 0.1);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.call-number {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.call-status-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.call-status-badge.initiated,
+.call-status-badge.ringing {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.call-status-badge.connected,
+.call-status-badge.in-progress {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.call-status-badge.completed {
+    background: rgba(100, 100, 100, 0.15);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.hangup-btn {
+    padding: 0.5rem;
+    background: rgba(255, 50, 50, 0.15);
+    border: 1px solid rgba(255, 50, 50, 0.25);
+    border-radius: 8px;
+    color: #ff6b6b;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.hangup-btn:hover {
+    background: rgba(255, 50, 50, 0.25);
+}
+
+/* Not Configured State */
+.not-configured {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.setup-prompt {
+    text-align: center;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    max-width: 400px;
+}
+
+.setup-prompt svg {
+    color: rgba(231, 0, 11, 0.4);
+    margin-bottom: 1.2rem;
+}
+
+.setup-prompt h3 {
+    margin: 0 0 0.6rem 0;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.setup-prompt p {
+    margin: 0 0 1.5rem 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.setup-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.setup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(231, 0, 11, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .twilio-demo {
+        padding: 1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sector-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tab-selector {
+        flex-direction: column;
+    }
+
+    .twilio-header {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+
+    .twilio-logo {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+}

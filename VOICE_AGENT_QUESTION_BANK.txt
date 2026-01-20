@@ -1,0 +1,126 @@
+================================================================================
+🎙️ VOICE AGENT - COMPREHENSIVE QUESTION BANK (ALL SECTORS)
+================================================================================
+This file contains test questions and scripts for all industry sectors
+supported by the application. Available in English and Hinglish translations.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+🏦 1. BANKING SECTOR
+--------------------------------------------------------------------------------
+
+[INBOUND / UI QUESTIONS]
+English:
+- What is my current savings account balance?
+- Can you show me my last five transactions?
+- I lost my debit card, please block it immediately.
+- What is the interest rate for a new home loan?
+- How do I update my KYC documents?
+
+Hinglish:
+- Mera current savings account balance kitna hai?
+- Kya tum meri last five transactions dikha sakte ho?
+- Mera debit card kho gaya hai, please ise turant block kar do.
+- New home loan ke liye interest rate kya chal raha hai?
+- Mujhe apne KYC documents update kaise karne honge?
+
+[OUTBOUND PROACTIVE SCRIPTS]
+English (Reminder): Hello! This is your banking assistant. Your EMI of 12,000 rupees is due on the 5th. Please ensure balance to avoid charges.
+Hinglish (Reminder): Namaste! Aapke loan ki barah hazaar rupaye ki EMI paanch tareek ko due hai. Kripya charges se bachne ke liye balance maintain rakhein.
+
+--------------------------------------------------------------------------------
+📈 2. FINTECH & FINANCIAL SERVICES
+--------------------------------------------------------------------------------
+
+[INBOUND / UI QUESTIONS]
+English:
+- How is my investment portfolio performing this month?
+- I want to stop my monthly SIP for some time.
+- Which tax-saving fund is best for my salary range?
+- How much time does it take to withdraw money from my wallet?
+- What are the current UPI transaction limits for my account?
+
+Hinglish:
+- Is mahine mera investment portfolio kaisa perform kar raha hai?
+- Main kuch time ke liye apni monthly SIP stop karna chahta hoon.
+- Meri salary range ke hisaab se kaunsa tax-saving fund best hai?
+- Wallet se paise withdraw karne mein kitna time lagta hai?
+- Mere account ke liye abhi UPI transaction limits kya hain?
+
+[OUTBOUND PROACTIVE SCRIPTS]
+English (Update): Hello! Your investment portfolio has grown by 8% this month. Check your dashboard for the full report.
+Hinglish (Update): Namaste! Aapka investment portfolio is mahine 8 percent badh gaya hai. Poori report ke liye dashboard check karein.
+
+--------------------------------------------------------------------------------
+🛡️ 3. INSURANCE SECTOR
+--------------------------------------------------------------------------------
+
+[INBOUND / UI QUESTIONS]
+English:
+- What is the current status of my health insurance claim?
+- Does my policy cover pre-existing diseases?
+- When is my car insurance policy expiring?
+- How do I add a nominee to my life insurance?
+- Can I pay my premium through credit card or UPI?
+
+Hinglish:
+- Mere health insurance claim ka abhi kya status hai?
+- Kya meri policy mein pehle se maujood bimariyan cover hoti hain?
+- Meri car insurance policy kab expire ho rahi hai?
+- Life insurance mein nominee kaise add karte hain?
+- Kya main apna premium credit card ya UPI se pay kar sakta hoon?
+
+[OUTBOUND PROACTIVE SCRIPTS]
+English (Renewal): Your auto insurance policy expires in 4 days. Renew today to keep your No Claim Bonus.
+Hinglish (Renewal): Aapki car insurance policy char din mein expire ho rahi hai. No Claim Bonus bachane ke liye aaj hi renew karein.
+
+--------------------------------------------------------------------------------
+🎧 4. BPO & CUSTOMER SUPPORT
+--------------------------------------------------------------------------------
+
+[INBOUND / UI QUESTIONS]
+English:
+- My order was supposed to be delivered today, where is it?
+- I want to return my product and get a full refund.
+- My internet connection is very slow since yesterday.
+- I am facing issues with my login password.
+- How can I upgrade my current plan to the unlimited version?
+
+Hinglish:
+- Mera order aaj deliver hona tha, abhi kahan hai?
+- Main apna product return karke full refund lena chahta hoon.
+- Kal se mera internet connection bahut slow chal raha hai.
+- Mujhe login password mein problem aa rahi hai.
+- Main apna current plan unlimited version mein kaise upgrade kar sakta hoon?
+
+[OUTBOUND PROACTIVE SCRIPTS]
+English (Follow-up): We have resolved your technical ticket. Is your internet working fine now?
+Hinglish (Follow-up): Humne aapka technical ticket solve kar diya hai. Kya ab aapka internet sahi chal raha hai?
+
+--------------------------------------------------------------------------------
+🏥 5. HEALTHCARE (APPOINTMENTS & RECORDS)
+--------------------------------------------------------------------------------
+
+[INBOUND / UI QUESTIONS]
+English:
+- I want to book a consultation with the cardiologist.
+- Is Dr. Sharma available on Wednesday for a follow-up?
+- Can you send my blood report results to my email?
+- I need to reschedule my today's appointment to tomorrow evening.
+- What are the clinic timings for the weekend?
+
+Hinglish:
+- Mujhe cardiologist ke saath consultation book karni hai.
+- Kya Dr. Sharma Wednesday ko follow-up ke liye available hain?
+- Kya aap meri blood report ke results mujhe email par bhej sakte hain?
+- Mujhe apni aaj ki appointment kal shaam ke liye reschedule karni hai.
+- Weekend par clinic ki timings kya rehti hain?
+
+[OUTBOUND PROACTIVE SCRIPTS]
+English (Confirmation): Confirming your appointment with Dr. Gupta for tomorrow at 11 AM. Please arrive 10 minutes early.
+Hinglish (Confirmation): Dr. Gupta ke saath kal subah gyarah baje ki aapki appointment confirm ho gayi hai. Kripya das minute pehle pahunchein.
+
+================================================================================
+Generated for: SBA Info Solutions - Voice Agent Demo Project
+Date: 2026-01-19
+================================================================================

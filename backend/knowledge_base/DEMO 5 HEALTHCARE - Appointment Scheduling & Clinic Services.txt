@@ -1,0 +1,77 @@
+HEALTHCARE DEMO - DOCUMENT PACK
+Healthcare Sector RAG Document - Appointments, Doctors, Clinic Information
+
+CLINIC INFORMATION
+Name: XYZ Healthcare Center
+Address: 123 Medical Plaza, Downtown City.
+Phone: +91-9876-543210
+Hours: Mon-Fri 9 AM to 8 PM, Sat 9 AM to 6 PM.
+Parking: Valet parking available. Basement parking free for patients.
+Directions: Near City Mall, opposite Metro Station Gate 2.
+
+APPOINTMENT BOOKING
+Booking Methods: Online (website/app), Phone, or Walk-in.
+Time Slots: 15-minute intervals.
+Same-day Appointment: Available. Call early (8 AM) for best chance.
+Weekend Appointments: Available on Saturdays. Sundays closed.
+Video Consultation: Select "Telemedicine" option. ₹500 fee.
+Family Booking: Can add family members in App profile and book for them.
+
+DEPARTMENTS & DOCTORS
+Cardiology: 
+  - Dr. Rajesh Kumar: Available Monday, Wednesday, Thursday from 9 AM to 1 PM. Fee ₹800.
+  - Dr. Priya Singh: Available Tuesday, Friday from 2 PM to 6 PM. Fee ₹800.
+
+Orthopedics: 
+  - Dr. Amit Patel (Orthopedic Surgeon - Joints): Available Wednesday, Friday from 2 PM to 5 PM. Fee ₹700.
+  - Dr. Sarah Johnson (Orthopedic Surgeon - Fractures): Available Monday, Thursday from 10 AM to 2 PM. Fee ₹700.
+
+General Medicine: 
+  - Dr. Vikram Desai: Available daily from 9 AM to 8 PM. Fee ₹500.
+
+Pediatrics: 
+  - Dr. Meera Iyer (Child Health Specialist): Available Monday to Friday from 3 PM to 7 PM. Fee ₹400.
+
+Specialists: 
+  - Neurologist: Dr. Anand Sharma, available Saturday only from 10 AM to 2 PM. Fee ₹1000.
+  - Dermatologist: Dr. Kavita Reddy, available Saturday only from 2 PM to 6 PM. Fee ₹900.
+
+Referral: Not mandatory for general/specialist consultation.
+
+FEES & PAYMENT
+Consultation Fees: ₹400 to ₹1000 depending on specialist.
+Payment Mode: Cash, Card, UPI, Insurance (Cashless).
+Insurance: Accepted for procedures/surgeries. OPD coverage depends on your policy.
+Cancellation Policy: Free cancellation if done more than 12 hours before appointment. 50% charge if less than 6 hours.
+Refund: Processed in 3 to 5 business days.
+
+PRE-VISIT INFO
+Arrival: Arrive 15 mins early for registration/vitals.
+Documents: Bring ID proof and past medical records.
+Wheelchair: Available at entrance. Assistance provided.
+Check-in: Self check-in kiosk available at reception.
+
+FAQ - APPOINTMENTS
+Q: I need to book an appointment with a cardiologist. 
+A: Dr. Rajesh Kumar is available Monday, Wednesday, Thursday from 9 AM to 1 PM. Dr. Priya Singh is available Tuesday, Friday from 2 PM to 6 PM. Check app for available slots.
+
+Q: Can I reschedule my appointment? 
+A: Yes, via App or Call. Free if done 6 hours prior to appointment time.
+
+Q: Do you accept insurance for consultation? 
+A: Only if your policy covers OPD. We provide receipt for reimbursement.
+
+Q: Can I request a female doctor? 
+A: Yes, please specify while booking. Dr. Priya Singh (Cardiology) and Dr. Sarah Johnson (Orthopedics) are available.
+
+Q: How do I provide feedback about my visit? 
+A: Feedback link sent via SMS after visit. Or use suggestion box at clinic reception.
+
+Q: What are Dr. Patel's available timings?
+A: Dr. Amit Patel (Orthopedic Surgeon) is available on Wednesday and Friday from 2 PM to 5 PM.
+
+Q: Can I book same-day appointments?
+A: Yes, same-day appointments are available. Call early at 8 AM for the best chance of getting a slot.
+
+Q: Do you offer video consultations?
+A: Yes, select the "Telemedicine" option when booking. Video consultation fee is ₹500.

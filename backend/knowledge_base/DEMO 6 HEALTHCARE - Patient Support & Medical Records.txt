@@ -1,0 +1,45 @@
+HEALTHCARE DEMO 2 - DOCUMENT PACK
+Healthcare Sector RAG Document - Patient Support, Medical History, Prescriptions
+
+MEDICAL RECORDS ACCESS
+Access: Log in to Patient Portal or App.
+History: View past visits, diagnosis, and treatment plans.
+Download: All reports available as PDF.
+Share: "Share with Doctor" feature available. Or download and email.
+Confidentiality: HIPAA compliant. Access only to you and treating doctor.
+Emergency Contact: Update in Profile > Emergency Info.
+
+LAB RESULTS & REPORTS
+Availability: Blood tests (24h), X-ray/Scan (48h).
+Notification: SMS/Email alert when report is ready.
+View Online: Portal > Reports > Lab/Radiology.
+Hard Copy: Collect from reception if needed.
+Interpretation: Doctor will discuss in follow-up. Normal ranges shown in report.
+
+PRESCRIPTIONS & MEDICATIONS
+Current Meds: View active prescriptions in App.
+Refill: Click "Request Refill" for chronic meds. Doctor approval in 4 hours.
+Missed Dose: Consult doctor. Generally, take as soon as remembered unless close to next dose.
+Side Effects: Report immediately via "Message Doctor" or call clinic.
+Physiotherapy: Prescription available for sessions. Book via app.
+
+HEALTH & LIFESTYLE
+Vaccination History: View past vaccines and due dates in "Immunization" tab.
+Diet Chart: Personalized diabetic/BP diet charts available on request.
+Vitals Tracking: Log BP, Sugar, Weight in App to share with doctor.
+BMI: Auto-calculated based on height/weight data.
+Symptoms: Flu (Fever, cough, body ache). Dengue (High fever, joint pain).
+
+GENERAL SUPPORT
+Discharge Summary: Available in records section post-hospitalization.
+Medical Certificate: Request during consultation or via portal (charges apply).
+Allergies: Listed in profile. Important to update if new allergies found.
+Chronic Pain: Pain management specialist available.
+Surgery History: All past procedures performed here are recorded.
+
+FAQ - PATIENT RECORDS
+Q: Can I get my recent lab results? A: Yes, check the 'Reports' section in the app.
+Q: I need a prescription refill. A: Use the 'Refill Request' button for active prescriptions.
+Q: Show me my vaccination history. A: Go to Health Profile > Vaccinations.
+Q: How do I update my emergency contact? A: Profile > Edit > Emergency Contact.
+Q: Can I get a diet chart? A: Yes, ask your doctor or nutritionist to assign one to your profile.

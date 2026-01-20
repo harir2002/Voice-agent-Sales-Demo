@@ -1,0 +1,55 @@
+INSURANCE DEMO - DOCUMENT PACK
+Insurance Sector RAG Document - Policies, Coverage, Claims Process
+
+INSURANCE PRODUCTS
+
+TERM LIFE INSURANCE
+Coverage: ₹25,00,000 to ₹1,00,00,000
+Premium: ₹200-₹1,000 per month (depends on age, health)
+Tenure: 10, 20, 30 years
+Claim Settlement: 7 days (if no complications)
+Eligibility: Age 18-65, medical checkup may required
+Difference vs Life Insurance: Term is pure protection (no maturity benefit). Life/Endowment has savings component.
+
+HEALTH INSURANCE
+Coverage: ₹5,00,000 to ₹25,00,000
+Premium: ₹300-₹2,000 per month (depends on age, coverage)
+Network Hospitals: 10,000+ across India
+Claim Settlement: Cashless at network hospitals. Reimbursement elsewhere.
+Pre-existing Disease: Covered after 1-4 years waiting period.
+Dental Treatment: Usually NOT covered unless due to accident/hospitalization.
+Family Floater: Add spouse/children/parents to same plan.
+Maternity: Covered in specific plans with 9-24 month waiting period.
+
+MOTOR INSURANCE
+Third-Party: Mandatory, covers damage to others' vehicle/property.
+Comprehensive: Covers own damage + third-party + theft + natural calamities.
+Premium: ₹2,000-₹8,000 annually (depends on vehicle, age, IDV).
+No Claim Bonus (NCB): 20-50% discount on renewal premium for claim-free years.
+Add-ons: Zero Depreciation (bumper-to-bumper), Engine Protect, Roadside Assistance.
+
+HOME & TRAVEL INSURANCE
+Home: Covers building + contents against fire, theft, flood. Premium ₹3k-15k/year.
+Travel: Medical emergency, flight delay, baggage loss. Premium ₹500/trip. Instant issuance.
+
+POLICY MANAGEMENT
+Premium Payment: Monthly, quarterly, annual (annual saves 5% more). Grace period 15-30 days.
+Renewal: Online via app/website. Renew before expiry to save NCB.
+Portability: Can switch insurer at renewal without losing benefits (apply 45 days prior).
+Cancellation: Free look period 15 days. Pro-rata refund thereafter.
+Nominee: Change details via 'Service Request' in app.
+
+CLAIM PROCESS
+Step 1: Report claim within 24 hours (call 1800-456-7890 or App).
+Step 2: Provide documents (Medical: bills, discharge summary; Motor: FIR, photos, license).
+Step 3: Assessment by surveyor/TPA.
+Step 4: Approval & settlement (Cashless: Direct to hospital/garage; Reimbursement: 15-30 days).
+Claim Settlement Ratio: 98.5% (High reliability).
+
+FAQ - INSURANCE
+Q: How do I file a claim? A: Call 1800-456-7890 or use app > Claim section. Provide required documents within 15 days.
+Q: How long does claim settlement take? A: 7-30 days depending on policy and documentation. Health claims faster at network hospitals.
+Q: Can I renew my expired policy? A: Yes, within 30 days of expiry (grace period). Coverage stops during this gap.
+Q: What is a cashless claim? A: Insurer pays hospital directly. You only pay non-medical expenses.
+Q: Can I increase coverage? A: Yes, at the time of renewal (Top-up plan).
+Q: How do I download policy? A: Log in to portal > My Policies > Download PDF.

@@ -10,7 +10,8 @@ import SarvamPlayground from './SarvamPlayground'
 import './DemoPage.css'
 import './CompanyStyles.css'
 
-const API_BASE_URL = 'http://localhost:8000'
+// Hardcoded backend URL for reliability
+const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
 
 // Hierarchical sector structure
 const SECTOR_HIERARCHY = {
@@ -110,6 +111,7 @@ const CAPABILITIES = [
 function DemoPage() {
     const [sectors, setSectors] = useState([])
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
     const [expandedCategory, setExpandedCategory] = useState(null)
     const [selectedSector, setSelectedSector] = useState(null)
     const [showTwilioDemo, setShowTwilioDemo] = useState(false)
@@ -124,10 +126,14 @@ function DemoPage() {
 
     const fetchSectors = async () => {
         try {
+            console.log('Fetching sectors from:', `${API_BASE_URL}/sectors`)
             const response = await axios.get(`${API_BASE_URL}/sectors`)
+            console.log('Sectors fetched:', response.data)
             setSectors(response.data)
+            setError(null)
         } catch (error) {
             console.error('Error fetching sectors:', error)
+            setError(`Failed to load sectors: ${error.message}`)
         } finally {
             setLoading(false)
         }
@@ -139,6 +145,7 @@ function DemoPage() {
 
     const getSectorsByCategory = (categoryId) => {
         const category = SECTOR_HIERARCHY[categoryId]
+        if (!sectors || sectors.length === 0) return []
         return sectors.filter(sector => category.subSectors.includes(sector.id))
     }
 
@@ -180,6 +187,12 @@ function DemoPage() {
                 </div>
 
                 <div className="sectors-list">
+                    {error && (
+                        <div style={{ color: '#ff4d4d', fontSize: '0.8rem', padding: '0.5rem', textAlign: 'center', background: 'rgba(231,0,11,0.1)', borderRadius: '4px', margin: '0.5rem 0' }}>
+                            ⚠️ {error}
+                        </div>
+                    )}
+
                     {loading ? (
                         <div className="loading">Loading sectors...</div>
                     ) : (
@@ -220,25 +233,31 @@ function DemoPage() {
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.3 }}
                                         >
-                                            {getSectorsByCategory(category.id).map((sector, subIndex) => (
-                                                <motion.div
-                                                    key={sector.id}
-                                                    className={`subsector-card ${selectedSector?.id === sector.id ? 'active' : ''}`}
-                                                    onClick={() => handleSectorSelect(sector)}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: subIndex * 0.05 }}
-                                                    whileHover={{ x: 5 }}
-                                                    whileTap={{ scale: 0.97 }}
-                                                >
-                                                    <div className="subsector-icon">{sector.icon}</div>
-                                                    <div className="subsector-info">
-                                                        <h4 className="subsector-title">{sector.title}</h4>
-                                                        <p className="subsector-subtitle">{sector.subtitle}</p>
-                                                    </div>
-                                                    <ChevronRight className="subsector-arrow" size={16} />
-                                                </motion.div>
-                                            ))}
+                                            {getSectorsByCategory(category.id).length > 0 ? (
+                                                getSectorsByCategory(category.id).map((sector, subIndex) => (
+                                                    <motion.div
+                                                        key={sector.id}
+                                                        className={`subsector-card ${selectedSector?.id === sector.id ? 'active' : ''}`}
+                                                        onClick={() => handleSectorSelect(sector)}
+                                                        initial={{ opacity: 0, x: -10 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: subIndex * 0.05 }}
+                                                        whileHover={{ x: 5 }}
+                                                        whileTap={{ scale: 0.97 }}
+                                                    >
+                                                        <div className="subsector-icon">{sector.icon}</div>
+                                                        <div className="subsector-info">
+                                                            <h4 className="subsector-title">{sector.title}</h4>
+                                                            <p className="subsector-subtitle">{sector.subtitle}</p>
+                                                        </div>
+                                                        <ChevronRight className="subsector-arrow" size={16} />
+                                                    </motion.div>
+                                                ))
+                                            ) : (
+                                                <div style={{ padding: '1rem', color: '#999', fontSize: '0.8rem', textAlign: 'center' }}>
+                                                    {sectors.length === 0 ? "No data loaded." : "No sub-sectors found."}
+                                                </div>
+                                            )}
                                         </motion.div>
                                     )}
                                 </AnimatePresence>

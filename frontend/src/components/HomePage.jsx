@@ -5,7 +5,7 @@ import axios from 'axios'
 import './HomePage.css'
 import './CompanyStyles.css'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
 
 // Hierarchical sector structure
 const SECTOR_HIERARCHY = {

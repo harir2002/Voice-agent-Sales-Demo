@@ -14,11 +14,11 @@ function TwilioDemo() {
     const [configLoading, setConfigLoading] = useState(false)
     const [configError, setConfigError] = useState('')
 
-    // Twilio credentials - Enter your own credentials in the config panel
-    const [accountSid, setAccountSid] = useState('')
-    const [authToken, setAuthToken] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [webhookUrl, setWebhookUrl] = useState('')
+    // Twilio credentials - Read from environment variables (set in Vercel dashboard)
+    const [accountSid, setAccountSid] = useState(import.meta.env.VITE_TWILIO_ACCOUNT_SID || '')
+    const [authToken, setAuthToken] = useState(import.meta.env.VITE_TWILIO_AUTH_TOKEN || '')
+    const [phoneNumber, setPhoneNumber] = useState(import.meta.env.VITE_TWILIO_PHONE_NUMBER || '')
+    const [webhookUrl, setWebhookUrl] = useState(import.meta.env.VITE_WEBHOOK_URL || '')
 
     // Call state
     const [activeTab, setActiveTab] = useState('inbound')

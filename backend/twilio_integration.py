@@ -189,10 +189,16 @@ async def configure_phone_webhook(config: WebhookConfigRequest):
     
     client = twilio_config.get("client")
     phone_number = twilio_config.get("phone_number")
-    webhook_url = twilio_config.get("webhook_url", "").strip().rstrip("/")
+    
+    # Safely get webhook URL, handling None
+    webhook_url = twilio_config.get("webhook_url")
+    if webhook_url:
+        webhook_url = webhook_url.strip().rstrip("/")
+    else:
+        webhook_url = ""
     
     if not webhook_url:
-        raise HTTPException(status_code=400, detail="Webhook URL is required. Please add your ngrok URL.")
+        raise HTTPException(status_code=400, detail="Webhook URL is required. Please set VITE_WEBHOOK_URL.")
     
     try:
         # Find the phone number SID
@@ -266,7 +272,11 @@ async def handle_inbound_call(request: Request):
     )
     
     # Connect to WebSocket for real-time audio streaming
-    webhook_url = twilio_config.get("webhook_url", "").strip()
+    webhook_url = twilio_config.get("webhook_url")
+    if webhook_url:
+        webhook_url = webhook_url.strip()
+    else:
+        webhook_url = ""
     if webhook_url:
         webhook_url = webhook_url.rstrip("/")
         # Convert HTTP URL to WebSocket URL
@@ -370,7 +380,11 @@ async def handle_inbound_call_sector(sector: str, request: Request):
     response.say(welcome, voice=VOICE, language=LANG)
     
     # Add media stream connection
-    webhook_url = twilio_config.get("webhook_url", "").strip()
+    webhook_url = twilio_config.get("webhook_url")
+    if webhook_url:
+        webhook_url = webhook_url.strip()
+    else:
+        webhook_url = ""
     if webhook_url:
         webhook_url = webhook_url.rstrip("/")
         ws_url = webhook_url.replace("https://", "wss://").replace("http://", "ws://")
@@ -398,7 +412,14 @@ async def initiate_outbound_call(call_request: OutboundCallRequest):
         raise HTTPException(status_code=400, detail="Twilio is not configured. Please add credentials first.")
     
     client = twilio_config.get("client")
-    webhook_url = twilio_config.get("webhook_url", "").strip()  # Strip any whitespace
+    
+    # Safely get webhook URL
+    webhook_url = twilio_config.get("webhook_url")
+    if webhook_url:
+        webhook_url = webhook_url.strip()
+    else:
+        webhook_url = ""
+        
     from_number = twilio_config.get("phone_number")
     
     if not webhook_url:

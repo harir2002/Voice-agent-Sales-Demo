@@ -1,9 +1,9 @@
 /* ==================== GLOBAL STYLES ==================== */
 
 :root {
-  /* Typography - Fluid Scaling */
-  /* Scales between 14px and 16px based on viewport width */
-  font-size: clamp(14px, 1vw + 10px, 16px);
+  /* Typography - Aggressively Reduced Fluid Scaling */
+  /* Scales between 12px and 14px */
+  font-size: clamp(12px, 0.8vw + 8px, 14px);
 
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;

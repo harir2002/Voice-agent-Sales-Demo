@@ -56,13 +56,25 @@ function HomePage({ onSectorSelect }) {
     }
 
     const toggleCategory = (categoryId) => {
+        console.log(`Toggling category: ${categoryId}. Current expanded: ${expandedCategory}`)
         setExpandedCategory(expandedCategory === categoryId ? null : categoryId)
     }
 
     const getSectorsByCategory = (categoryId) => {
         const category = SECTOR_HIERARCHY[categoryId]
-        return sectors.filter(sector => category.subSectors.includes(sector.id))
+        if (!sectors || sectors.length === 0) {
+            console.warn("No sectors available to filter")
+            return []
+        }
+        const filtered = sectors.filter(sector => category.subSectors.includes(sector.id))
+        console.log(`Category ${categoryId} has ${filtered.length} sectors`)
+        return filtered
     }
+
+    // Debugging: Log sectors when they change
+    useEffect(() => {
+        console.log('Sectors state updated:', sectors)
+    }, [sectors])
 
     return (
         <div className="home-page">
@@ -167,26 +179,32 @@ function HomePage({ onSectorSelect }) {
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.3 }}
                                     >
-                                        {getSectorsByCategory(category.id).map((sector, subIndex) => (
-                                            <motion.div
-                                                key={sector.id}
-                                                className="subsector-card glassmorphism"
-                                                onClick={() => onSectorSelect(sector)}
-                                                initial={{ opacity: 0, x: -10 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: subIndex * 0.05 }}
-                                                whileHover={{ scale: 1.03, x: 10 }}
-                                                whileTap={{ scale: 0.97 }}
-                                            >
-                                                <div className="subsector-icon">{sector.icon}</div>
-                                                <div className="subsector-info">
-                                                    <h3 className="subsector-title">{sector.title}</h3>
-                                                    <p className="subsector-subtitle">{sector.subtitle}</p>
-                                                    <div className="subsector-tags">{sector.tags}</div>
-                                                </div>
-                                                <ChevronRight className="subsector-arrow" size={20} />
-                                            </motion.div>
-                                        ))}
+                                        {getSectorsByCategory(category.id).length > 0 ? (
+                                            getSectorsByCategory(category.id).map((sector, subIndex) => (
+                                                <motion.div
+                                                    key={sector.id}
+                                                    className="subsector-card glassmorphism"
+                                                    onClick={() => onSectorSelect(sector)}
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: subIndex * 0.05 }}
+                                                    whileHover={{ scale: 1.03, x: 10 }}
+                                                    whileTap={{ scale: 0.97 }}
+                                                >
+                                                    <div className="subsector-icon">{sector.icon}</div>
+                                                    <div className="subsector-info">
+                                                        <h3 className="subsector-title">{sector.title}</h3>
+                                                        <p className="subsector-subtitle">{sector.subtitle}</p>
+                                                        <div className="subsector-tags">{sector.tags}</div>
+                                                    </div>
+                                                    <ChevronRight className="subsector-arrow" size={20} />
+                                                </motion.div>
+                                            ))
+                                        ) : (
+                                            <div style={{ padding: '1rem', color: '#ccc', textAlign: 'center' }}>
+                                                {sectors.length === 0 ? "Loading data or API error..." : "No sectors found for this category."}
+                                            </div>
+                                        )}
                                     </motion.div>
                                 )}
                             </AnimatePresence>

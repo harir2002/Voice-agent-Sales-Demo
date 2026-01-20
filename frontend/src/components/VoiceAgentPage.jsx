@@ -5,7 +5,7 @@ import axios from 'axios'
 import './VoiceAgentPage.css'
 import './CompanyStyles.css'
 
-const API_BASE_URL = 'http://localhost:8000'
+const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
 
 function VoiceAgentPage({ sector, onBack }) {
     const [messages, setMessages] = useState([])

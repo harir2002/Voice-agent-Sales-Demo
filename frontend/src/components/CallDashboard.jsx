@@ -32,7 +32,7 @@ import {
 import axios from 'axios'
 import './CallDashboard.css'
 
-const API_BASE_URL = 'http://localhost:8000'
+const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
 
 // Sentiment Icon Component
 const SentimentIcon = ({ sentiment, size = 18 }) => {

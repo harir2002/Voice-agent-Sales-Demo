@@ -327,31 +327,34 @@
     font-size: 1.2rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive - Laptops (1024px - 1440px) */
+@media (max-width: 1440px) {
+    .home-page {
+        padding: 1.5rem;
+    }
+
+    .hero-section {
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .logo-wrapper {
+        min-width: 380px;
+        padding: 25px 40px;
+    }
+
+    .hero-logo {
+        height: 160px;
+        margin-bottom: 1rem;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
 
     .hero-subtitle {
         font-size: 1.1rem;
-    }
-
-    .logo-wrapper {
-        min-width: 320px;
-        padding: 30px 40px;
-    }
-
-    .hero-logo {
-        height: 180px;
-    }
-
-    .features-showcase {
-        grid-template-columns: 1fr;
-    }
-
-    .category-header {
-        padding: 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .category-icon {
@@ -367,8 +370,20 @@
         font-size: 0.9rem;
     }
 
-    .subsector-card {
-        padding: 1.2rem;
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .feature-title {
+        font-size: 1rem;
+    }
+
+    .feature-desc {
+        font-size: 0.85rem;
     }
 
     .subsector-icon {
@@ -378,8 +393,105 @@
     .subsector-title {
         font-size: 1.1rem;
     }
+}
+
+/* Responsive - Tablets and Small Laptops */
+@media (max-width: 1024px) {
+    .logo-wrapper {
+        min-width: 340px;
+        padding: 22px 35px;
+    }
+
+    .hero-logo {
+        height: 140px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .category-icon {
+        font-size: 2.2rem;
+    }
+
+    .category-title {
+        font-size: 1.4rem;
+    }
+
+    .feature-icon {
+        font-size: 2.2rem;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .logo-wrapper {
+        min-width: 280px;
+        padding: 20px 30px;
+    }
+
+    .hero-logo {
+        height: 120px;
+    }
+
+    .features-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .category-header {
+        padding: 1.2rem;
+    }
+
+    .category-icon {
+        font-size: 2rem;
+        margin-right: 0.8rem;
+    }
+
+    .category-title {
+        font-size: 1.2rem;
+    }
+
+    .category-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .subsector-card {
+        padding: 1rem;
+    }
+
+    .subsector-icon {
+        font-size: 1.6rem;
+    }
+
+    .subsector-title {
+        font-size: 1rem;
+    }
 
     .subsector-subtitle {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+    }
+
+    .feature-title {
+        font-size: 0.95rem;
+    }
+
+    .feature-desc {
+        font-size: 0.8rem;
     }
 }

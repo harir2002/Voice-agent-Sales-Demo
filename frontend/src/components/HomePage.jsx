@@ -33,9 +33,9 @@ const SECTOR_HIERARCHY = {
 }
 
 function HomePage({ onSectorSelect }) {
-    const [sectors, setSectors] = useState([])
     const [loading, setLoading] = useState(true)
     const [expandedCategory, setExpandedCategory] = useState(null)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         fetchSectors()
@@ -43,10 +43,13 @@ function HomePage({ onSectorSelect }) {
 
     const fetchSectors = async () => {
         try {
+            console.log('Fetching from:', `${API_BASE_URL}/sectors`)
             const response = await axios.get(`${API_BASE_URL}/sectors`)
             setSectors(response.data)
+            setError(null)
         } catch (error) {
             console.error('Error fetching sectors:', error)
+            setError(`Failed to load sectors (${error.message}). API: ${API_BASE_URL}`)
         } finally {
             setLoading(false)
         }
@@ -117,6 +120,12 @@ function HomePage({ onSectorSelect }) {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
             >
+                {error && (
+                    <div style={{ color: '#ff4d4d', textAlign: 'center', padding: '1rem', background: 'rgba(231,0,11,0.1)', borderRadius: '8px', marginBottom: '1rem' }}>
+                        ⚠️ {error}
+                    </div>
+                )}
+
                 {loading ? (
                     <div className="loading">Loading sectors...</div>
                 ) : (

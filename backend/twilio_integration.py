@@ -9,7 +9,11 @@ import base64
 import asyncio
 import logging
 import struct
-import audioop
+# audioop was removed in Python 3.13, use audioop-lts as fallback
+try:
+    import audioop
+except ImportError:
+    import audioop_lts as audioop
 import wave
 import io
 import time

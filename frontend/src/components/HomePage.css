@@ -17,7 +17,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 60px;
+    padding: 25px 40px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 30px;
     border: 2px solid rgba(231, 0, 11, 0.3);
@@ -25,7 +25,7 @@
         0 20px 40px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(15px);
     transition: all 0.4s ease;
-    min-width: 500px;
+    min-width: 350px;
 }
 
 .logo-wrapper:hover {
@@ -36,7 +36,7 @@
 }
 
 .hero-logo {
-    height: 250px;
+    height: 140px;
     width: auto;
     display: block;
     margin-bottom: 1.5rem;
@@ -50,13 +50,13 @@
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     margin-bottom: 3rem;
 }
@@ -106,7 +106,7 @@
 }
 
 .feature-icon {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     filter: drop-shadow(0 4px 12px rgba(231, 0, 11, 0.4));
     transition: transform 0.3s ease;
@@ -186,7 +186,7 @@
 }
 
 .category-icon {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin-right: 1.5rem;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
     animation: float 3s ease-in-out infinite;
@@ -209,7 +209,7 @@
 }
 
 .category-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #ffffff;
     margin: 0;
@@ -217,7 +217,7 @@
 }
 
 .category-subtitle {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.9);
     margin: 0.3rem 0 0 0;
 }
@@ -282,7 +282,7 @@
 }
 
 .subsector-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-right: 1.2rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
@@ -292,7 +292,7 @@
 }
 
 .subsector-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #ffffff;
     margin: 0 0 0.3rem 0;

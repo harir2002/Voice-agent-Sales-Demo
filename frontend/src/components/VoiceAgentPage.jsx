@@ -28,6 +28,9 @@ function VoiceAgentPage({ sector, onBack }) {
     const fillerTimerRef = useRef(null) // Track filler timer for cleanup
     const isFillerPlayingRef = useRef(false) // Track if filler is currently playing
     const fillerCancelledRef = useRef(false) // Flag to cancel filler before it plays
+    const isMountedRef = useRef(true) // Track if component is mounted
+    const autoRestartTimerRef = useRef(null) // Track auto-restart timers
+    const welcomePlayedRef = useRef(false) // Track if welcome message has been played (ref to prevent double play in StrictMode)
 
     useEffect(() => {
         // Scroll container to bottom when messages change
@@ -37,12 +40,15 @@ function VoiceAgentPage({ sector, onBack }) {
     }, [messages])
 
     // Auto-play welcome message when page loads
+    // Use ref to prevent double play in React StrictMode
     useEffect(() => {
-        if (!welcomePlayed) {
+        // Only play if not already played (using ref to avoid StrictMode double-invoke)
+        if (!welcomePlayedRef.current) {
+            welcomePlayedRef.current = true
             playWelcomeMessage()
-            setWelcomePlayed(true)
+            setWelcomePlayed(true) // Keep state for UI purposes if needed
         }
-    }, [welcomePlayed])
+    }, []) // Empty dependency array - only run once on mount
 
     const playWelcomeMessage = async () => {
         const welcomeMessages = {
@@ -77,30 +83,37 @@ function VoiceAgentPage({ sector, onBack }) {
                     timestamp: timestamp
                 }])
 
-                // 🎯 Enable interruption for welcome message
+                // 🎯 Set AI speaking flag (mic will start AFTER welcome finishes)
                 setIsAISpeaking(true)
-
-                // Start recording before playing audio to allow interruption
-                setTimeout(() => {
-                    startRecording()
-                }, 100)
 
                 // Play welcome message
                 playAudioResponse(ttsResponse.data.audio, () => {
                     console.log("Welcome message ended - auto-starting mic")
                     setIsAISpeaking(false)
                     // Auto-restart mic for continuous conversation
-                    setTimeout(() => {
-                        startRecording()
-                        console.log('🎤 Mic ready for next question')
-                    }, 300)
+                    // Only if component is still mounted
+                    if (isMountedRef.current) {
+                        if (autoRestartTimerRef.current) {
+                            clearTimeout(autoRestartTimerRef.current)
+                        }
+                        autoRestartTimerRef.current = setTimeout(() => {
+                            if (isMountedRef.current) {
+                                startRecording()
+                                console.log('🎤 Mic ready for next question')
+                            }
+                        }, 300)
+                    }
                 })
             } else {
-                startRecording()
+                if (isMountedRef.current) {
+                    startRecording()
+                }
             }
         } catch (error) {
             console.error('Error playing welcome message:', error)
-            startRecording()
+            if (isMountedRef.current) {
+                startRecording()
+            }
         }
     }
 
@@ -170,10 +183,16 @@ function VoiceAgentPage({ sector, onBack }) {
 
                 // Auto-restart if not processing and call mode is on
                 // This handles cases where recognition ends unexpectedly
-                if (callMode && !isProcessing && !isAISpeaking) {
+                // BUT only if component is still mounted
+                if (isMountedRef.current && callMode && !isProcessing && !isAISpeaking) {
                     console.log('🎤 Recognition ended - Auto-restarting mic')
-                    setTimeout(() => {
-                        if (!isProcessing && !isAISpeaking) {
+                    // Clear any existing auto-restart timer
+                    if (autoRestartTimerRef.current) {
+                        clearTimeout(autoRestartTimerRef.current)
+                    }
+                    autoRestartTimerRef.current = setTimeout(() => {
+                        // Double-check component is still mounted before restarting
+                        if (isMountedRef.current && !isProcessing && !isAISpeaking) {
                             startRecording()
                         }
                     }, 500)
@@ -184,25 +203,85 @@ function VoiceAgentPage({ sector, onBack }) {
         }
 
         return () => {
+            // Mark component as unmounted
+            isMountedRef.current = false
+
+            // Clear all timers
             if (silenceTimerRef.current) {
                 clearTimeout(silenceTimerRef.current)
+                silenceTimerRef.current = null
             }
+            if (fillerTimerRef.current) {
+                clearTimeout(fillerTimerRef.current)
+                fillerTimerRef.current = null
+            }
+            if (autoRestartTimerRef.current) {
+                clearTimeout(autoRestartTimerRef.current)
+                autoRestartTimerRef.current = null
+            }
+
+            // Stop speech recognition
             if (recognitionRef.current) {
-                recognitionRef.current.abort() // abort() is more immediate than stop()
+                try {
+                    recognitionRef.current.stop()
+                    recognitionRef.current.abort() // abort() is more immediate than stop()
+                } catch (e) {
+                    console.log('Error stopping recognition:', e)
+                }
             }
+
+            // Stop any playing audio
+            if (currentAudio) {
+                currentAudio.pause()
+                currentAudio.currentTime = 0
+                setCurrentAudio(null)
+            }
+
+            console.log('🧹 VoiceAgentPage cleanup complete - all sessions stopped')
         }
     }, [])
 
-    // Cleanup audio on unmount
+    // Comprehensive cleanup on unmount
     useEffect(() => {
         return () => {
+            // Mark as unmounted
+            isMountedRef.current = false
+
+            // Stop all audio
             if (currentAudio) {
                 console.log("Stopping audio on unmount")
                 currentAudio.pause()
                 currentAudio.currentTime = 0
+                setCurrentAudio(null)
             }
+
+            // Clear all timers
+            if (silenceTimerRef.current) {
+                clearTimeout(silenceTimerRef.current)
+                silenceTimerRef.current = null
+            }
+            if (fillerTimerRef.current) {
+                clearTimeout(fillerTimerRef.current)
+                fillerTimerRef.current = null
+            }
+            if (autoRestartTimerRef.current) {
+                clearTimeout(autoRestartTimerRef.current)
+                autoRestartTimerRef.current = null
+            }
+
+            // Stop speech recognition
+            if (recognitionRef.current) {
+                try {
+                    recognitionRef.current.stop()
+                    recognitionRef.current.abort()
+                } catch (e) {
+                    // Ignore errors during cleanup
+                }
+            }
+
+            console.log('🧹 Complete cleanup on unmount')
         }
-    }, [currentAudio])
+    }, [])
 
     const fillerPhrases = [
         "Let me check that for you...",
@@ -287,6 +366,12 @@ function VoiceAgentPage({ sector, onBack }) {
     }
 
     const startRecording = () => {
+        // Don't start if component is unmounted
+        if (!isMountedRef.current) {
+            console.log('⚠️ Cannot start recording - component unmounted')
+            return
+        }
+
         if (recognitionRef.current) {
             setTranscriptionPreview('')
             transcriptionRef.current = ''
@@ -320,9 +405,17 @@ function VoiceAgentPage({ sector, onBack }) {
             } else {
                 // If nothing was said, restart recording (keep listening)
                 // But give a small delay to avoid rapid loops
-                setTimeout(() => {
-                    if (!isProcessing) startRecording()
-                }, 500)
+                // Only if component is still mounted
+                if (isMountedRef.current) {
+                    if (autoRestartTimerRef.current) {
+                        clearTimeout(autoRestartTimerRef.current)
+                    }
+                    autoRestartTimerRef.current = setTimeout(() => {
+                        if (isMountedRef.current && !isProcessing) {
+                            startRecording()
+                        }
+                    }, 500)
+                }
             }
         }
     }
@@ -355,14 +448,23 @@ function VoiceAgentPage({ sector, onBack }) {
         // Smart Filler Logic: Play filler ONLY for complex queries that take time
         // Skip fillers for greetings, thanks, and other fast responses
         // Increased delay to 2500ms to avoid clash with most responses
-        if (!isSimpleQuery) {
+        if (!isSimpleQuery && isMountedRef.current) {
             fillerTimerRef.current = setTimeout(() => {
-                console.log("⏳ Response taking time, playing filler...")
-                playFillerPhrase()
+                // Check if still mounted before playing filler
+                if (isMountedRef.current) {
+                    console.log("⏳ Response taking time, playing filler...")
+                    playFillerPhrase()
+                }
             }, 2500)
         }
 
         try {
+            // Check if component is still mounted before proceeding
+            if (!isMountedRef.current) {
+                console.log('⚠️ Component unmounted, aborting request')
+                return
+            }
+
             const timestamp = new Date().toISOString()
             setMessages(prev => [...prev, {
                 type: 'user',
@@ -378,6 +480,12 @@ function VoiceAgentPage({ sector, onBack }) {
                 language: selectedLanguage // Send selected language
             })
 
+            // Check again after async operation
+            if (!isMountedRef.current) {
+                console.log('⚠️ Component unmounted during chat request, aborting')
+                return
+            }
+
             const chatEnd = performance.now()
             console.log(`🤖 LLM Response time: ${(chatEnd - chatStart).toFixed(0)}ms`)
 
@@ -386,11 +494,15 @@ function VoiceAgentPage({ sector, onBack }) {
             // Check for human handoff
             if (needs_human_handoff) {
                 console.log('🚨 Human handoff required:', handoff_reason)
-                setNeedsHumanHandoff(true)
-                // Show handoff UI
-                setTimeout(() => {
-                    alert(`Human Agent Required\n\nReason: ${handoff_reason}\n\nA human agent will be connected shortly. Please hold on.`)
-                }, 500)
+                if (isMountedRef.current) {
+                    setNeedsHumanHandoff(true)
+                    // Show handoff UI
+                    setTimeout(() => {
+                        if (isMountedRef.current) {
+                            alert(`Human Agent Required\n\nReason: ${handoff_reason}\n\nA human agent will be connected shortly. Please hold on.`)
+                        }
+                    }, 500)
+                }
             }
 
             const ttsStart = performance.now()
@@ -398,6 +510,13 @@ function VoiceAgentPage({ sector, onBack }) {
                 text: aiResponse,
                 sector: sector.id
             })
+
+            // Check again after TTS request
+            if (!isMountedRef.current) {
+                console.log('⚠️ Component unmounted during TTS request, aborting')
+                return
+            }
+
             const ttsEnd = performance.now()
             console.log(`🔊 TTS time: ${(ttsEnd - ttsStart).toFixed(0)}ms`)
 
@@ -427,6 +546,12 @@ function VoiceAgentPage({ sector, onBack }) {
 
             const audioBase64 = ttsResponse.data.audio
 
+            // Final check before updating state and playing audio
+            if (!isMountedRef.current) {
+                console.log('⚠️ Component unmounted before playing audio, aborting')
+                return
+            }
+
             setMessages(prev => [...prev, {
                 type: 'ai',
                 text: aiResponse,
@@ -435,33 +560,44 @@ function VoiceAgentPage({ sector, onBack }) {
             }])
 
             if (audioBase64) {
-                // 🎯 Start recording BEFORE playing audio to enable interruption
+                // 🎯 STOP microphone BEFORE AI speaks to prevent echo/feedback
                 setIsAISpeaking(true)
 
-                // Start listening immediately so user can interrupt
-                setTimeout(() => {
-                    if (!isRecording) {
-                        startRecording()
+                // Stop any active recording to prevent capturing AI's voice
+                if (isRecording && recognitionRef.current) {
+                    console.log('🔇 Stopping mic before AI speaks to prevent echo')
+                    try {
+                        recognitionRef.current.stop()
+                        setIsRecording(false)
+                    } catch (e) {
+                        console.log('Error stopping recognition:', e)
                     }
-                }, 100)
+                }
 
                 // Play AI response
                 playAudioResponse(audioBase64, () => {
                     console.log("AI response ended naturally")
                     setIsAISpeaking(false)
 
-                    // Auto-restart mic after AI finishes speaking
-                    if (callMode) {
+                    // Auto-restart mic AFTER AI finishes speaking
+                    // Only if component is still mounted
+                    if (isMountedRef.current && callMode) {
                         console.log('🎤 Restarting mic for next question...')
-                        setTimeout(() => {
-                            startRecording()
+                        // Clear any existing timer
+                        if (autoRestartTimerRef.current) {
+                            clearTimeout(autoRestartTimerRef.current)
+                        }
+                        autoRestartTimerRef.current = setTimeout(() => {
+                            if (isMountedRef.current) {
+                                startRecording()
+                            }
                         }, 300) // Small delay for natural conversation flow
                     }
                 })
             } else {
                 setIsAISpeaking(false)
-                // Auto-restart mic
-                if (callMode) {
+                // Auto-restart mic only if component is still mounted
+                if (isMountedRef.current && callMode) {
                     startRecording()
                 }
             }
@@ -475,7 +611,8 @@ function VoiceAgentPage({ sector, onBack }) {
             console.error('Error processing voice input:', error)
             alert('Error processing voice input. Please try again.')
             // 📞 Keep listening even after error in phone call mode
-            if (callMode) {
+            // Only if component is still mounted
+            if (isMountedRef.current && callMode) {
                 startRecording()
             }
         } finally {

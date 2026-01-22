@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Agent - Link Tester</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #e7000b, #ff4d4d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 3rem;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section h2 {
+            margin-bottom: 1.5rem;
+            color: #e7000b;
+            font-size: 1.5rem;
+        }
+        
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .link-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(231, 0, 11, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover {
+            border-color: #e7000b;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(231, 0, 11, 0.3);
+        }
+        
+        .link-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+        
+        .link-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .link-card .path {
+            font-family: 'Courier New', monospace;
+            color: #4ade80;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+        
+        .link-card a {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #e7000b, #ff4d4d);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .link-card a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(231, 0, 11, 0.5);
+        }
+        
+        .base-url {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .base-url code {
+            color: #4ade80;
+            font-size: 1.2rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI Voice Agent - Link Tester</h1>
+        <p class="subtitle">Test all shareable demo links</p>
+        
+        <div class="base-url">
+            <strong>Base URL:</strong> <code id="baseUrl">http://localhost:5173</code>
+        </div>
+        
+        <!-- Web Chat Demos -->
+        <div class="section">
+            <h2>📱 Web Chat Interface Demos</h2>
+            <div class="link-grid">
+                <div class="link-card">
+                    <div class="icon">🏦</div>
+                    <h3>Banking AI Agent</h3>
+                    <div class="path">/demo/banking</div>
+                    <a href="http://localhost:5173/demo/banking" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">📈</div>
+                    <h3>Financial Services AI</h3>
+                    <div class="path">/demo/financial</div>
+                    <a href="http://localhost:5173/demo/financial" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🛡️</div>
+                    <h3>Insurance AI Agent</h3>
+                    <div class="path">/demo/insurance</div>
+                    <a href="http://localhost:5173/demo/insurance" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🎧</div>
+                    <h3>BPO/Support AI</h3>
+                    <div class="path">/demo/bpo</div>
+                    <a href="http://localhost:5173/demo/bpo" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🗓️</div>
+                    <h3>Healthcare (Appointments)</h3>
+                    <div class="path">/demo/healthcare-appt</div>
+                    <a href="http://localhost:5173/demo/healthcare-appt" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">📋</div>
+                    <h3>Healthcare (Patient Records)</h3>
+                    <div class="path">/demo/healthcare-patient</div>
+                    <a href="http://localhost:5173/demo/healthcare-patient" target="_blank">Open Demo →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Phone Call Demos -->
+        <div class="section">
+            <h2>📞 Phone Call Demos (Twilio)</h2>
+            <div class="link-grid">
+                <div class="link-card">
+                    <div class="icon">🏦📞</div>
+                    <h3>Banking Phone Calls</h3>
+                    <div class="path">/phone/banking</div>
+                    <a href="http://localhost:5173/phone/banking" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">📈📞</div>
+                    <h3>Financial Phone Calls</h3>
+                    <div class="path">/phone/financial</div>
+                    <a href="http://localhost:5173/phone/financial" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🛡️📞</div>
+                    <h3>Insurance Phone Calls</h3>
+                    <div class="path">/phone/insurance</div>
+                    <a href="http://localhost:5173/phone/insurance" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🎧📞</div>
+                    <h3>BPO Phone Calls</h3>
+                    <div class="path">/phone/bpo</div>
+                    <a href="http://localhost:5173/phone/bpo" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🗓️📞</div>
+                    <h3>Healthcare (Appt) Calls</h3>
+                    <div class="path">/phone/healthcare-appt</div>
+                    <a href="http://localhost:5173/phone/healthcare-appt" target="_blank">Open Demo →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">📋📞</div>
+                    <h3>Healthcare (Patient) Calls</h3>
+                    <div class="path">/phone/healthcare-patient</div>
+                    <a href="http://localhost:5173/phone/healthcare-patient" target="_blank">Open Demo →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="section">
+            <h2>🎯 Quick Actions</h2>
+            <div class="link-grid">
+                <div class="link-card">
+                    <div class="icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <div class="path">/analytics</div>
+                    <a href="http://localhost:5173/analytics" target="_blank">Open Dashboard →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🧮</div>
+                    <h3>ROI Calculators</h3>
+                    <div class="path">/calculators</div>
+                    <a href="http://localhost:5173/calculators" target="_blank">Open Calculators →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🔊</div>
+                    <h3>TTS Playground</h3>
+                    <div class="path">/playground</div>
+                    <a href="http://localhost:5173/playground" target="_blank">Open Playground →</a>
+                </div>
+                
+                <div class="link-card">
+                    <div class="icon">🏠</div>
+                    <h3>Main Home Page</h3>
+                    <div class="path">/</div>
+                    <a href="http://localhost:5173/" target="_blank">Go Home →</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Built with ❤️ by SBA Info Solutions Private Limited</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Version 2.2 - January 2026</p>
+        </div>
+    </div>
+    
+    <script>
+        // Update base URL if needed for production
+        const currentHost = window.location.origin;
+        if (currentHost !== 'http://localhost:5173') {
+            document.getElementById('baseUrl').textContent = currentHost;
+            // Update all links
+            document.querySelectorAll('.link-card a').forEach(link => {
+                const path = link.getAttribute('href').replace('http://localhost:5173', '');
+                link.setAttribute('href', currentHost + path);
+            });
+        }
+    </script>
+</body>
+</html>

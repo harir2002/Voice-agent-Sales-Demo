@@ -108,7 +108,7 @@ const CAPABILITIES = [
     }
 ]
 
-function DemoPage() {
+function DemoPage({ initialSector = null, initialView = null, initialPhoneSector = null }) {
     const [sectors, setSectors] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -119,10 +119,32 @@ function DemoPage() {
     const [showCalculators, setShowCalculators] = useState(false)
     const [showPlayground, setShowPlayground] = useState(false)
     const [activeCapabilityTab, setActiveCapabilityTab] = useState(0)
+    const [phoneSectorFilter, setPhoneSectorFilter] = useState(initialPhoneSector)
 
     useEffect(() => {
         fetchSectors()
     }, [])
+
+    // Handle initial view/sector from URL
+    useEffect(() => {
+        if (sectors.length > 0) {
+            if (initialSector) {
+                const sector = sectors.find(s => s.id === initialSector)
+                if (sector) {
+                    setSelectedSector(sector)
+                }
+            } else if (initialView === 'phone') {
+                setShowTwilioDemo(true)
+                setPhoneSectorFilter(initialPhoneSector)
+            } else if (initialView === 'analytics') {
+                setShowDashboard(true)
+            } else if (initialView === 'calculators') {
+                setShowCalculators(true)
+            } else if (initialView === 'playground') {
+                setShowPlayground(true)
+            }
+        }
+    }, [sectors, initialSector, initialView, initialPhoneSector])
 
     const fetchSectors = async () => {
         try {
@@ -413,7 +435,7 @@ function DemoPage() {
                             transition={{ duration: 0.4 }}
                             className="demo-content-wrapper"
                         >
-                            <TwilioDemo />
+                            <TwilioDemo initialSector={phoneSectorFilter} />
                         </motion.div>
                     ) : selectedSector ? (
                         <motion.div

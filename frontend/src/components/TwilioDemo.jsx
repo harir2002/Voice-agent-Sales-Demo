@@ -7,7 +7,7 @@ import './TwilioDemo.css'
 // Use environment variable for production, fallback to localhost for development
 const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
 
-function TwilioDemo() {
+function TwilioDemo({ initialSector = null }) {
     // Configuration state
     const [isConfigured, setIsConfigured] = useState(false)
     const [showConfig, setShowConfig] = useState(false)
@@ -20,19 +20,19 @@ function TwilioDemo() {
     const [phoneNumber, setPhoneNumber] = useState(import.meta.env.VITE_TWILIO_PHONE_NUMBER || '')
     const [webhookUrl, setWebhookUrl] = useState(import.meta.env.VITE_WEBHOOK_URL || '')
 
-    // Call state
+    // Call state - use initialSector if provided
     const [activeTab, setActiveTab] = useState('inbound')
     const [outboundNumber, setOutboundNumber] = useState('')
-    const [selectedSector, setSelectedSector] = useState('banking')
+    const [selectedSector, setSelectedSector] = useState(initialSector || 'banking')
     const [callStatus, setCallStatus] = useState(null)
     const [callLoading, setCallLoading] = useState(false)
     const [activeCalls, setActiveCalls] = useState([])
 
-    // Webhook configuration state
+    // Webhook configuration state - use initialSector if provided
     const [webhookConfigured, setWebhookConfigured] = useState(false)
     const [webhookLoading, setWebhookLoading] = useState(false)
     const [webhookStatus, setWebhookStatus] = useState(null)
-    const [inboundSector, setInboundSector] = useState('banking')
+    const [inboundSector, setInboundSector] = useState(initialSector || 'banking')
 
     // NEW: Outbound call purpose and customer name
     const [callPurpose, setCallPurpose] = useState('general')

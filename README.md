@@ -790,7 +790,15 @@ Proprietary - SBA Info Solutions Private Limited
 
 ## Changelog
 
-### Version 2.1 (December 2025) ⭐ **Latest**
+### Version 2.2 (January 2026) ⭐ **Latest**
+- ✅ **Shareable Links**: Added React Router for direct URL access to individual demos
+- ✅ **Sector-Specific URLs**: Each sector now has unique shareable links (e.g., `/demo/banking`, `/phone/insurance`)
+- ✅ **Phone Call Links**: Separate URLs for phone demos with pre-selected sectors
+- ✅ **Quick Action Links**: Direct access to Analytics, Calculators, and Playground
+- ✅ **Documentation**: Added `SHAREABLE_LINKS.md` and `QUICK_LINKS.md` reference guides
+- ✅ **Client-Ready**: Easy to share specific demos without navigation
+
+### Version 2.1 (December 2025)
 - ✅ **Multi-Language Support**: Added support for 8 Indian languages (Hindi, Tamil, Telugu, Kannada, Malayalam, Bengali, Marathi)
 - ✅ **Indian Accent Recognition**: Enhanced speech recognition for Indian English accents
 - ✅ **Context Window**: Implemented conversation history tracking (last 10 messages)
@@ -815,6 +823,73 @@ Proprietary - SBA Info Solutions Private Limited
 - ✅ Context switching
 - ✅ Performance optimizations
 - ✅ Monitoring and metrics
+
+
+---
+
+## 🔗 Shareable Links
+
+### Direct Access URLs
+
+Each sector demo and phone call interface now has its own unique URL that can be shared directly with clients. This allows you to:
+- Share specific demos without requiring navigation
+- Bookmark frequently used demos
+- Create custom landing pages for different clients
+
+### Web Chat Interface Links
+
+Access individual sector demos directly:
+
+| Sector | URL Path | Example |
+|--------|----------|---------|
+| 🏦 Banking | `/demo/banking` | `https://your-app.com/demo/banking` |
+| 📈 Financial Services | `/demo/financial` | `https://your-app.com/demo/financial` |
+| 🛡️ Insurance | `/demo/insurance` | `https://your-app.com/demo/insurance` |
+| 🎧 BPO/Support | `/demo/bpo` | `https://your-app.com/demo/bpo` |
+| 🗓️ Healthcare (Appt) | `/demo/healthcare-appt` | `https://your-app.com/demo/healthcare-appt` |
+| 📋 Healthcare (Patient) | `/demo/healthcare-patient` | `https://your-app.com/demo/healthcare-patient` |
+
+### Phone Call Demo Links
+
+Access Twilio phone demos with sector pre-selected:
+
+| Sector | URL Path | Example |
+|--------|----------|---------|
+| 🏦 Banking Calls | `/phone/banking` | `https://your-app.com/phone/banking` |
+| 📈 Financial Calls | `/phone/financial` | `https://your-app.com/phone/financial` |
+| 🛡️ Insurance Calls | `/phone/insurance` | `https://your-app.com/phone/insurance` |
+| 🎧 BPO Calls | `/phone/bpo` | `https://your-app.com/phone/bpo` |
+| 🗓️ Healthcare (Appt) Calls | `/phone/healthcare-appt` | `https://your-app.com/phone/healthcare-appt` |
+| 📋 Healthcare (Patient) Calls | `/phone/healthcare-patient` | `https://your-app.com/phone/healthcare-patient` |
+
+### Other Quick Actions
+
+| Feature | URL Path |
+|---------|----------|
+| 📊 Analytics Dashboard | `/analytics` |
+| 🧮 ROI Calculators | `/calculators` |
+| 🔊 TTS Playground | `/playground` |
+
+### Usage Examples
+
+**For Client Demos:**
+```
+Send to banking client: https://your-app.com/demo/banking
+Send to insurance client: https://your-app.com/phone/insurance
+```
+
+**For Sales Presentations:**
+- Share sector-specific links based on prospect's industry
+- Each link opens directly to the relevant demo
+- No navigation required - instant access
+
+**Local Development:**
+```
+http://localhost:5173/demo/banking
+http://localhost:5173/phone/financial
+```
+
+📋 **See `SHAREABLE_LINKS.md` and `QUICK_LINKS.md` for complete reference**
 
 ---
 

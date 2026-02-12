@@ -5,7 +5,7 @@ import axios from 'axios'
 import './TwilioDemo.css'
 
 // Use environment variable for production, fallback to localhost for development
-const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 function TwilioDemo({ initialSector = null }) {
     // Configuration state

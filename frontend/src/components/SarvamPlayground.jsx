@@ -4,7 +4,7 @@ import { Volume2, Play, Loader2, RefreshCw, Sparkles, Square } from 'lucide-reac
 import axios from 'axios'
 import './SarvamPlayground.css'
 
-const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 // Available Sarvam voices (v2 compatible)
 const SARVAM_VOICES = [

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useSearchParams } from 'react-router-dom'
 import { ChevronDown, ChevronRight, Phone, BarChart3, Sparkles, Zap, Globe, Shield, HeadphonesIcon, TrendingUp, Clock, Users, Award, CheckCircle2, Calculator, Volume2 } from 'lucide-react'
 import axios from 'axios'
 import VoiceAgentPage from './VoiceAgentPage'
@@ -11,7 +12,7 @@ import './DemoPage.css'
 import './CompanyStyles.css'
 
 // Hardcoded backend URL for reliability
-const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 // Hierarchical sector structure
 const SECTOR_HIERARCHY = {
@@ -109,6 +110,9 @@ const CAPABILITIES = [
 ]
 
 function DemoPage({ initialSector = null, initialView = null, initialPhoneSector = null }) {
+    const [searchParams] = useSearchParams()
+    const mode = searchParams.get('mode')
+
     const [sectors, setSectors] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -218,73 +222,81 @@ function DemoPage({ initialSector = null, initialView = null, initialPhoneSector
                     {loading ? (
                         <div className="loading">Loading sectors...</div>
                     ) : (
-                        Object.values(SECTOR_HIERARCHY).map((category, index) => (
-                            <motion.div
-                                key={category.id}
-                                className="category-container"
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                            >
-                                <motion.div
-                                    className={`category-header ${expandedCategory === category.id ? 'expanded' : ''}`}
-                                    onClick={() => toggleCategory(category.id)}
-                                    whileHover={{ x: 5 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    <div className="category-icon">{category.icon}</div>
-                                    <div className="category-info">
-                                        <h3 className="category-title">{category.title}</h3>
-                                        <p className="category-subtitle">{category.fullName}</p>
-                                    </div>
-                                    <motion.div
-                                        className="category-chevron"
-                                        animate={{ rotate: expandedCategory === category.id ? 180 : 0 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <ChevronDown size={20} />
-                                    </motion.div>
-                                </motion.div>
 
-                                <AnimatePresence>
-                                    {expandedCategory === category.id && (
+                        Object.values(SECTOR_HIERARCHY)
+                            .filter(category => {
+                                if (mode === 'bfsi') {
+                                    return category.id === 'bfsi';
+                                }
+                                return true;
+                            })
+                            .map((category, index) => (
+                                <motion.div
+                                    key={category.id}
+                                    className="category-container"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1 }}
+                                >
+                                    <motion.div
+                                        className={`category-header ${expandedCategory === category.id ? 'expanded' : ''}`}
+                                        onClick={() => toggleCategory(category.id)}
+                                        whileHover={{ x: 5 }}
+                                        whileTap={{ scale: 0.98 }}
+                                    >
+                                        <div className="category-icon">{category.icon}</div>
+                                        <div className="category-info">
+                                            <h3 className="category-title">{category.title}</h3>
+                                            <p className="category-subtitle">{category.fullName}</p>
+                                        </div>
                                         <motion.div
-                                            className="subsectors-container"
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
+                                            className="category-chevron"
+                                            animate={{ rotate: expandedCategory === category.id ? 180 : 0 }}
                                             transition={{ duration: 0.3 }}
                                         >
-                                            {getSectorsByCategory(category.id).length > 0 ? (
-                                                getSectorsByCategory(category.id).map((sector, subIndex) => (
-                                                    <motion.div
-                                                        key={sector.id}
-                                                        className={`subsector-card ${selectedSector?.id === sector.id ? 'active' : ''}`}
-                                                        onClick={() => handleSectorSelect(sector)}
-                                                        initial={{ opacity: 0, x: -10 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: subIndex * 0.05 }}
-                                                        whileHover={{ x: 5 }}
-                                                        whileTap={{ scale: 0.97 }}
-                                                    >
-                                                        <div className="subsector-icon">{sector.icon}</div>
-                                                        <div className="subsector-info">
-                                                            <h4 className="subsector-title">{sector.title}</h4>
-                                                            <p className="subsector-subtitle">{sector.subtitle}</p>
-                                                        </div>
-                                                        <ChevronRight className="subsector-arrow" size={16} />
-                                                    </motion.div>
-                                                ))
-                                            ) : (
-                                                <div style={{ padding: '1rem', color: '#999', fontSize: '0.8rem', textAlign: 'center' }}>
-                                                    {sectors.length === 0 ? "No data loaded." : "No sub-sectors found."}
-                                                </div>
-                                            )}
+                                            <ChevronDown size={20} />
                                         </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </motion.div>
-                        ))
+                                    </motion.div>
+
+                                    <AnimatePresence>
+                                        {expandedCategory === category.id && (
+                                            <motion.div
+                                                className="subsectors-container"
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
+                                                {getSectorsByCategory(category.id).length > 0 ? (
+                                                    getSectorsByCategory(category.id).map((sector, subIndex) => (
+                                                        <motion.div
+                                                            key={sector.id}
+                                                            className={`subsector-card ${selectedSector?.id === sector.id ? 'active' : ''}`}
+                                                            onClick={() => handleSectorSelect(sector)}
+                                                            initial={{ opacity: 0, x: -10 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            transition={{ delay: subIndex * 0.05 }}
+                                                            whileHover={{ x: 5 }}
+                                                            whileTap={{ scale: 0.97 }}
+                                                        >
+                                                            <div className="subsector-icon">{sector.icon}</div>
+                                                            <div className="subsector-info">
+                                                                <h4 className="subsector-title">{sector.title}</h4>
+                                                                <p className="subsector-subtitle">{sector.subtitle}</p>
+                                                            </div>
+                                                            <ChevronRight className="subsector-arrow" size={16} />
+                                                        </motion.div>
+                                                    ))
+                                                ) : (
+                                                    <div style={{ padding: '1rem', color: '#999', fontSize: '0.8rem', textAlign: 'center' }}>
+                                                        {sectors.length === 0 ? "No data loaded." : "No sub-sectors found."}
+                                                    </div>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
+                            ))
                     )}
 
                     {/* Separator */}
@@ -410,10 +422,10 @@ function DemoPage({ initialSector = null, initialView = null, initialPhoneSector
                     <p className="company-name">SBA Info Solutions Pvt Ltd</p>
                     <p className="company-ref">Enterprise AI Solutions</p>
                 </div>
-            </motion.div>
+            </motion.div >
 
             {/* Right Content Area */}
-            <div className="demo-content">
+            < div className="demo-content" >
                 <AnimatePresence mode="wait">
                     {showDashboard ? (
                         <motion.div
@@ -661,8 +673,8 @@ function DemoPage({ initialSector = null, initialView = null, initialPhoneSector
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

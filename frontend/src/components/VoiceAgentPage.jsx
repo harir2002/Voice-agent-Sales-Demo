@@ -5,7 +5,7 @@ import axios from 'axios'
 import './VoiceAgentPage.css'
 import './CompanyStyles.css'
 
-const API_BASE_URL = 'https://voice-agent-sales-demo.onrender.com'
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 function VoiceAgentPage({ sector, onBack }) {
     const [messages, setMessages] = useState([])
@@ -241,6 +241,25 @@ function VoiceAgentPage({ sector, onBack }) {
         }
     }, [])
 
+    // Update recognition language when selection changes
+    useEffect(() => {
+        if (recognitionRef.current) {
+            const langMap = {
+                'en': 'en-IN',
+                'hi': 'hi-IN',
+                'ta': 'ta-IN',
+                'te': 'te-IN',
+                'kn': 'kn-IN',
+                'ml': 'ml-IN',
+                'bn': 'bn-IN',
+                'mr': 'mr-IN'
+            }
+            const newLang = langMap[selectedLanguage] || 'en-IN'
+            recognitionRef.current.lang = newLang
+            console.log(`🌐 Speech recognition language updated to: ${newLang}`)
+        }
+    }, [selectedLanguage])
+
     // Comprehensive cleanup on unmount
     useEffect(() => {
         return () => {
@@ -372,20 +391,27 @@ function VoiceAgentPage({ sector, onBack }) {
             return
         }
 
-        if (recognitionRef.current) {
-            setTranscriptionPreview('')
-            transcriptionRef.current = ''
-            try {
-                recognitionRef.current.start()
-                setIsRecording(true)
-                console.log('🎤 Recording started - User can interrupt anytime')
-            } catch (e) {
-                // If already started, ignore the error
-                if (e.message && e.message.includes('already started')) {
-                    console.log('🎤 Recognition already active')
-                } else {
-                    console.error("Error starting recognition:", e)
-                }
+        if (!recognitionRef.current) {
+            alert('Speech Recognition is not supported in this browser. Please use Chrome or Edge.')
+            return
+        }
+
+        setTranscriptionPreview('')
+        transcriptionRef.current = ''
+        try {
+            recognitionRef.current.start()
+            setIsRecording(true)
+            console.log('🎤 Recording started - User can interrupt anytime')
+        } catch (e) {
+            // If already started, ignore the error
+            if (e.message && e.message.includes('already started')) {
+                console.log('🎤 Recognition already active')
+            } else if (e.name === 'NotAllowedError') {
+                alert('Microphone access denied. Please allow microphone permissions in your browser settings.')
+                console.error("Microphone access denied:", e)
+            } else {
+                console.error("Error starting recognition:", e)
+                alert(`Error starting microphone: ${e.message || 'Unknown error'}`)
             }
         }
     }
